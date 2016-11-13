@@ -1,0 +1,9 @@
+sudo: required
+language: generic
+services:
+  - docker
+before_install:
+  - ./build.sh
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - ./push.sh

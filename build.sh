@@ -1,10 +1,20 @@
 #!/bin/bash
 set -e
 
-IFS= read -s -p "Root password:" ROOT_PASS
+if [ -z "$ROOT_PASS"]; then
+    read -s -p "Root password:" ROOT_PASS
+    echo ''
+fi
+if [ -z "$USERNAME"]; then
+    read -p "Username:" USERNAME
+fi
+if [ -z "$PASSWORD"]; then
+    read -s -p "Password:" PASSWORD
+    echo ''
+fi
 
-echo "Building development image"
-docker build --build-arg "ROOT_PASS=$ROOT_PASS" -t jerluc/dev:latest .
-
-echo "Creating development container"
-docker create -it --privileged --name dev jerluc/dev
+docker build \
+    --build-arg "ROOT_PASS=$ROOT_PASS" \
+    --build-arg "USERNAME=$USERNAME" \
+    --build-arg "PASSWORD=$PASSWORD" \
+    -t jerluc/dev:latest .

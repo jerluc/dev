@@ -1,20 +1,18 @@
-FROM gentoo/stage3-amd64 
+FROM gentoo/stage3-amd64
 MAINTAINER Jeremy Lucas <jeremyalucas@gmail.com>
 
 ARG ROOT_PASS
+ARG USERNAME
+ARG PASSWORD
 ENV ROOT_PASS $ROOT_PASS
+ENV USERNAME $USERNAME
+ENV PASSWORD $PASSWORD
 
-# Sets up Base Portage
-# Shamelessly stolen from gentoo/portage
-ADD http://distfiles.gentoo.org/snapshots/portage-latest.tar.bz2 /
-RUN mkdir -p /usr
-RUN bzcat /portage-latest.tar.bz2 | tar -xf - -C /usr
-RUN mkdir -p /usr/portage/distfiles /usr/portage/metadata /usr/portage/packages
+ADD fs /
+WORKDIR /
 
 # Run various image bootstrapping tasks
-ADD bootstrap /tmp/bootstrap
-ADD fs/etc/portage /etc/portage
 RUN /tmp/bootstrap/bootstrap.sh
 #RUN rm -rf /tmp/bootstrap
 
-CMD /bin/bash
+CMD ["/bin/login"]

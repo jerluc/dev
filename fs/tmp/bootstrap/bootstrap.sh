@@ -5,8 +5,8 @@ pushd /tmp/bootstrap
 
 source config.sh
 
-./users.sh
 ./portage.sh
+./users.sh
 # ./deps.sh
 
 popd
