@@ -10,4 +10,4 @@ emerge -uDq dev-lang/perl
 emerge -uDq dev-vcs/git
 
 # Finally, download all the preconfigured dependencies
-cat $CURRDIR/deps.txt | xargs emerge -uq
+cat $CURRDIR/deps.txt | xargs emerge -uq --autounmask-write
