@@ -12,7 +12,9 @@ ADD fs /
 WORKDIR /
 
 # Run various image bootstrapping tasks
-RUN /tmp/bootstrap/bootstrap.sh
-#RUN rm -rf /tmp/bootstrap
+RUN /tmp/bootstrap/portage.sh
+RUN /tmp/bootstrap/users.sh
+RUN /tmp/bootstrap/deps.sh
+RUN rm -rf /tmp/bootstrap
 
-CMD ["/bin/login"]
+ENTRYPOINT ["/bin/sh", "-c", "login"]

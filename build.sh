@@ -18,3 +18,5 @@ docker build \
     --build-arg "USERNAME=$USERNAME" \
     --build-arg "PASSWORD=$PASSWORD" \
     -t jerluc/dev:latest .
+
+docker export -o env.tgz jerluc/dev:latest
