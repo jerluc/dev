@@ -4,6 +4,7 @@ app-misc/tmux
 dev-lang/go
 dev-lang/python
 dev-lang/rust
+dev-libs/openssl
 dev-python/pip
 dev-python/pypy
 dev-util/cmake
