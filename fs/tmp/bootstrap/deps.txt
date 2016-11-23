@@ -6,7 +6,6 @@ dev-lang/python
 dev-lang/rust
 dev-libs/openssl
 dev-python/pip
-dev-python/pypy
 dev-util/cmake
 dev-util/google-perftools
 dev-util/valgrind
